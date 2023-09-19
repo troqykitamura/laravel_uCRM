@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
+        "jsx": "preserve", // 追記
         "baseUrl": ".",
         "paths": {
             "@/*": ["resources/js/*"]
-        }
+        },
+        "checkJs": false
     },
     "exclude": ["node_modules", "public"]
 }
