@@ -5,6 +5,11 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\InertiaTestController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\AnalysisController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,5 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::resource('items', ItemController::class)
+->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
