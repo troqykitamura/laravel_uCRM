@@ -58,4 +58,10 @@ Route::middleware('auth')->group(function () {
 Route::resource('items', ItemController::class)
 ->middleware(['auth', 'verified']);
 
+Route::resource('customers', CustomerController::class)
+->middleware(['auth', 'verified']);
+
+Route::resource('purchases', PurchaseController::class)
+->middleware(['auth', 'verified']);
+
 require __DIR__.'/auth.php';

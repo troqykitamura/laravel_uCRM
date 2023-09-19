@@ -43,6 +43,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     商品管理
                                 </BreezeNavLink>
+                                <BreezeNavLink
+                                    :href="route('customers.index')"
+                                    :active="route().current('customers.index')"
+                                >
+                                    顧客管理
+                                </BreezeNavLink>
                             </div>
                         </div>
 
@@ -149,6 +155,31 @@ const showingNavigationDropdown = ref(false);
                             :active="route().current('dashboard')"
                         >
                             Dashboard
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink
+                            :href="route('purchases.create')"
+                            :active="route().current('purchases.create')"
+                        >
+                            購入画面
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('purchases.index')"
+                            :active="route().current('purchases.index')"
+                        >
+                            購買履歴
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('items.index')"
+                            :active="route().current('items.index')"
+                        >
+                            商品管理
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('customers.index')"
+                            :active="route().current('customer.index')"
+                        >
+                            顧客管理
                         </ResponsiveNavLink>
                     </div>
 
