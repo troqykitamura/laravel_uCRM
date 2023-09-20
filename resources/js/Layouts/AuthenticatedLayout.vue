@@ -49,6 +49,20 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     顧客管理
                                 </BreezeNavLink>
+                                <BreezeNavLink
+                                    :href="route('purchases.create')"
+                                    :active="
+                                        route().current('purchases.create')
+                                    "
+                                >
+                                    購入画面
+                                </BreezeNavLink>
+                                <BreezeNavLink
+                                    :href="route('purchases.index')"
+                                    :active="route().current('purchases.index')"
+                                >
+                                    購買履歴
+                                </BreezeNavLink>
                             </div>
                         </div>
 

@@ -1,5 +1,5 @@
 <script setup>
-import { getToday } from "@/common";
+import { getToday } from "@/common"; // 別ファイルをインポート
 import { onMounted, reactive, ref, computed } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 
@@ -9,9 +9,12 @@ const props = defineProps({
 });
 
 onMounted(() => {
+    // ページ読み込み後 即座に実行
     form.date = getToday();
     props.items.forEach((item) => {
+        // 配列を1つずつ処理
         itemList.value.push({
+            // 配列に1つずつ追加
             id: item.id,
             name: item.name,
             price: item.price,
@@ -20,7 +23,7 @@ onMounted(() => {
     });
 });
 
-const itemList = ref([]);
+const itemList = ref([]); // リアクティブな配列を準備
 
 const form = reactive({
     date: null,
@@ -28,6 +31,8 @@ const form = reactive({
     status: true,
     items: [],
 });
+
+const quantity = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]; // option用
 
 const totalPrice = computed(() => {
     let total = 0;
@@ -39,24 +44,18 @@ const totalPrice = computed(() => {
 
 const storePurchase = () => {
     itemList.value.forEach((item) => {
-        if (item.quantity > 0) {
-            form.items.push({
-                id: item.id,
-                quantity: item.quantity,
-            });
-        }
+        if (item.quantity > 0)
+            // 0より大きいものだけ追加
+            form.items.push({ id: item.id, quantity: item.quantity });
     });
     Inertia.post(route("purchases.store"), form);
 };
-
-const quantity = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 </script>
-
 <template>
     <form @submit.prevent="storePurchase">
-        日付<br />
-        <input type="date" name="date" v-model="form.date" /><br />
-
+        　日付<br />
+        <input type="date" name="date" v-model="form.date" />
+        <br />
         会員名<br />
         <select name="customer" v-model="form.customer_id">
             <option
@@ -67,17 +66,38 @@ const quantity = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
                 {{ customer.id }} : {{ customer.name }}
             </option>
         </select>
+
         <br /><br />
 
         商品・サービス<br />
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>商品名</th>
-                    <th>金額</th>
-                    <th>数量</th>
-                    <th>小計</th>
+                    <th
+                        class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"
+                    >
+                        Id
+                    </th>
+                    <th
+                        class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
+                    >
+                        商品名
+                    </th>
+                    <th
+                        class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
+                    >
+                        金額
+                    </th>
+                    <th
+                        class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
+                    >
+                        数量
+                    </th>
+                    <th
+                        class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
+                    >
+                        小計
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -98,8 +118,9 @@ const quantity = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
                 </tr>
             </tbody>
         </table>
-        <br />
-        合計: {{ totalPrice }} 円<br />
+        <br /><br />
+        合計 {{ totalPrice }} 円<br />
+
         <button>登録する</button>
     </form>
 </template>
