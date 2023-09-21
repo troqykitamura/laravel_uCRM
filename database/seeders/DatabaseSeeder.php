@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
            $this->call([
             UserSeeder::class,
                         ItemSeeder::class,
+                        RankSeeder::class
         ]);
 
 
@@ -25,7 +26,7 @@ class DatabaseSeeder extends Seeder
 
 
                 $items = \App\Models\Item::all();
-        Purchase::factory(30000)->create()
+        Purchase::factory(5000)->create()
         // Purchase::factory(100)->create()
         ->each(function(Purchase $purchase) use ($items) {
             $purchase->items()->attach(

@@ -63,6 +63,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     購買履歴
                                 </BreezeNavLink>
+                                <BreezeNavLink
+                                    :href="route('analysis')"
+                                    :active="route().current('analysis')"
+                                >
+                                    データ分析
+                                </BreezeNavLink>
                             </div>
                         </div>
 

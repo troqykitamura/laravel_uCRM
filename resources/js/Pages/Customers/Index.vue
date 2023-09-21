@@ -1,5 +1,6 @@
 <script setup>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
+// import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
+import BreezeAuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import FlashMessage from "@/Components/FlashMessage.vue";
 import Pagination from "@/Components/Pagination.vue";

@@ -64,4 +64,6 @@ Route::resource('customers', CustomerController::class)
 Route::resource('purchases', PurchaseController::class)
 ->middleware(['auth', 'verified']);
 
+Route::get('analysis', [AnalysisController::class, 'index'])->name('analysis');
+
 require __DIR__.'/auth.php';

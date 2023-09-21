@@ -1,5 +1,6 @@
 <script setup>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
+// import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
+import BreezeAuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/inertia-vue3";
 import { onMounted, reactive, ref, computed } from "vue";
 import { Inertia } from "@inertiajs/inertia";
